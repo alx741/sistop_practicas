@@ -1,6 +1,8 @@
 = Virtualización
-Universidad de Cuenca
-Sistemas Operativos I
+Universidad de Cuenca - Sistemas Operativos I
+Daniel Campoverde Carrión [alx741]
+:hardbreaks:
+:icons: font
 
 
 == Objetivo
@@ -23,16 +25,26 @@ Se procede a instalar la herramienta con la siguiente instrucción:
 
     $ sudo apt-get install qemu
 
+TIP: Recuerde que podría requerir una actualización de su sistema antes de
+poder realizar la instalación.
+
 
 === Creación de la maquina virtual
 
-Creamos una imagen para contener la instalación virtual con:
+Requeriremos un nuevo directorio para contener la instalación:
+
+    $ cd ~
+    $ mkdir maquina_virtual
+    $ cd maquina_virtual
+
+Creamos una imagen para contener la instalación virtual:
 
     $ qemu-img create virtual.img 10G
 
 Esto creará un fichero `virtual.img` en el directorio actual que permitirá
 ubicar hasta *10 Gb* de disco virtual.
 
+<<<
 
 ==== Responda
 
@@ -44,7 +56,66 @@ ubicar hasta *10 Gb* de disco virtual.
 ** Averigüe que es ese tipo de fichero.
 ====
 
----
 
-El comando a usar en la terminal será `qemu-system-x86_64` pues es la
-arquitectura que pretendemos virtualizar.
+Para arrancar la maquina virtual el comando a usar en la terminal será
+`qemu-system-x86_64`, pues es la arquitectura que pretendemos virtualizar:
+
+    $ qemu-system-x86_64 -hda virtual.img -boot d -cdrom ./imagen.iso -m 512
+
+[NOTE]
+====
+* `virtual.img` es el fichero que creó en el paso anterior
+* `imagen.iso` es la imagen del sistema operativo que desea instalar
+* Puede detener la ejecución de la maquina virtual con `Ctrl+Alt+q`
+====
+
+
+==== Responda
+
+====
+* Que significan las opciones que ha usado (_-hda_, _-boot_, _-cdrom_, _-m_) ?
+* Por que es necesaria la opción _-boot_ con el parámetro *d* ?
+* A cambiado el tamaño del fichero `virtual.img`?
+** Por que tiene ese tamaño?
+====
+
+
+=== Instalación del sistema operativo huésped
+
+Inicie nuevamente la maquina virtual con el comando descrito anteriormente y
+proceda a realizar la instalación del sistema operativo cuya imagen ha
+arrancado.
+
+<<<
+
+==== Responda
+
+====
+* A cambiado el tamaño del fichero `virtual.img`?
+** Por que tiene ese tamaño?
+* Donde considera que se encuentra instalado el sistema operativo huésped?
+* Remueva los permisos de lectura de `virtual.img`. Puede arrancar el sistema
+    huésped ahora?. ¿Por qué?
+====
+
+
+Ahora que el sistema operativo huesped está instalado puede arrancar la maquina
+virtual con:
+
+    $ qemu -m 512 -hda virtual.img
+
+<<<
+
+==== Responda
+
+====
+* Por que el comando de arranque ha cambiado?
+** Considera que la opción _-cdrom_ es necesaria ahora?. ¿Por qué?
+* Como puede especificar la distribución de teclado de la maquina virtual?
+* Como iniciaría la maquina virtual en pantalla completa?
+* Escriba un shell script que le permita iniciar su maquina virtual.
+** El script deberá recibir como parámetro _opcional_ la distribución de
+teclado.
+* Intente mover el fichero `virtual.img` a otro directorio. Puede arrancar la
+  maquina virtual desde ahí?
+====
