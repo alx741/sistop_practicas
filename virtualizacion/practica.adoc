@@ -1,0 +1,50 @@
+= Virtualización
+Universidad de Cuenca
+Sistemas Operativos I
+
+
+== Objetivo
+
+Proporcionar al estudiante con las habilidades de ejecutar un sistema operativo
+completo sobre una maquina virtual y conocer, mediante la exploración practica,
+la relación entre el ecosistema de software del anfitrión así como del huésped.
+
+
+== Instrucciones
+
+=== Instalación de la herramienta de virtualización
+
+La herramienta de virtualización a usarse es la pieza de software libre *QEMU*
+(Quick Emulator). *QEMU* permite virualizar varias arquitecturas de hardware
+como _ARM_, _MIPS_, _X86_64_, _SPARC_, entre otros. En esta practica usaremos
+únicamente la arquitectura _X86_64_.
+
+Se procede a instalar la herramienta con la siguiente instrucción:
+
+    $ sudo apt-get install qemu
+
+
+=== Creación de la maquina virtual
+
+Creamos una imagen para contener la instalación virtual con:
+
+    $ qemu-img create virtual.img 10G
+
+Esto creará un fichero `virtual.img` en el directorio actual que permitirá
+ubicar hasta *10 Gb* de disco virtual.
+
+
+==== Responda
+
+====
+* Averigüe el espacio que el fichero `virtual.img` ocupa en su disco duro.
+** Compárelo con el tamaño especificado durante la creación (10G).
+** Por que tiene ese tamaño?
+* Utilice el comando `file` para averiguar el tipo de fichero de `virtual.img`.
+** Averigüe que es ese tipo de fichero.
+====
+
+---
+
+El comando a usar en la terminal será `qemu-system-x86_64` pues es la
+arquitectura que pretendemos virtualizar.
