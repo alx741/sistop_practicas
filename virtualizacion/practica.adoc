@@ -1,15 +1,15 @@
 = Virtualización
 Universidad de Cuenca - Sistemas Operativos I
-Daniel Campoverde Carrión [alx741]
 :hardbreaks:
+:numbered:
 :icons: font
 
 
 == Objetivo
 
-Proporcionar al estudiante con las habilidades de ejecutar un sistema operativo
-completo sobre una maquina virtual y conocer, mediante la exploración practica,
-la relación entre el ecosistema de software del anfitrión así como del huésped.
+Proporcionar las habilidades de ejecutar un sistema operativo completo sobre una
+máquina virtual y conocer, mediante la exploración práctica, la relación entre
+el ecosistema de software del anfitrión y del huésped.
 
 
 == Instrucciones
@@ -17,19 +17,35 @@ la relación entre el ecosistema de software del anfitrión así como del huésp
 === Instalación de la herramienta de virtualización
 
 La herramienta de virtualización a usarse es la pieza de software libre *QEMU*
-(Quick Emulator). *QEMU* permite virualizar varias arquitecturas de hardware
-como _ARM_, _MIPS_, _X86_64_, _SPARC_, entre otros. En esta practica usaremos
-únicamente la arquitectura _X86_64_.
+http://www.qemu.org[(Quick Emulator)]. *QEMU* permite virtualizar varias
+arquitecturas de hardware como _ARM_, _MIPS_, _X86_64_, _SPARC_, entre otros. En
+esta practica usaremos únicamente la arquitectura _X86_64_.
 
-Se procede a instalar la herramienta con la siguiente instrucción:
+==== Responda
+====
+* ¿Cuáles son las características principales de *QEMU*?
+* ¿En qué sistemas operativos se puede instalar *QEMU*?
+* ¿Qué sistemas operativos huésped se pueden instalar con *QEMU*?
+* ¿*QEMU* permite realizar emulación, virtualización, paravirtualización o sirve como contenedor? Explique.
+* ¿Qué otras 2 alternativas parecidas podría mencionar? Descríbalas brevemente.
+====
+
+Se procede a instalar la herramienta con la siguiente instrucción
 
     $ sudo apt-get install qemu
 
-TIP: Recuerde que podría requerir una actualización de su sistema antes de
-poder realizar la instalación.
+[TIP]
+====
+* Recuerde que podría requerir una actualización de su sistema antes de
+    poder realizar la instalación: `sudo apt-get update`.
+* Para ser capaz de ejecutar estas instrucciones se deberá usar una distribución
+    GNU/Linux basada en *Debian* como son: _Mint_, _Ubuntu (y sus variantes)_,
+    _Elementary_, _Debian_, entre otras.
+====
 
 
-=== Creación de la maquina virtual
+
+=== Creación de la máquina virtual
 
 Requeriremos un nuevo directorio para contener la instalación:
 
@@ -44,21 +60,19 @@ Creamos una imagen para contener la instalación virtual:
 Esto creará un fichero `virtual.img` en el directorio actual que permitirá
 ubicar hasta *10 Gb* de disco virtual.
 
-<<<
 
 ==== Responda
-
 ====
 * Averigüe el espacio que el fichero `virtual.img` ocupa en su disco duro.
 ** Compárelo con el tamaño especificado durante la creación (10G).
-** Por que tiene ese tamaño?
+** ¿Por qué tiene ese tamaño?
 * Utilice el comando `file` para averiguar el tipo de fichero de `virtual.img`.
-** Averigüe que es ese tipo de fichero.
+** Averigüe qué es ese tipo de fichero.
 ====
 
 
-Para arrancar la maquina virtual el comando a usar en la terminal será
-`qemu-system-x86_64`, pues es la arquitectura que pretendemos virtualizar:
+Para arrancar la máquina virtual el comando a usar en la terminal será
+`qemu-system-x86_64`, pues es la arquitectura que pretendemos virtualizar
 
     $ qemu-system-x86_64 -hda virtual.img -boot d -cdrom ./imagen.iso -m 512
 
@@ -66,56 +80,62 @@ Para arrancar la maquina virtual el comando a usar en la terminal será
 ====
 * `virtual.img` es el fichero que creó en el paso anterior
 * `imagen.iso` es la imagen del sistema operativo que desea instalar
-* Puede detener la ejecución de la maquina virtual con `Ctrl+Alt+q`
+* Puede detener la ejecución de la máquina virtual con `Ctrl+Alt+q`
 ====
 
 
 ==== Responda
-
 ====
-* Que significan las opciones que ha usado (_-hda_, _-boot_, _-cdrom_, _-m_) ?
-* Por que es necesaria la opción _-boot_ con el parámetro *d* ?
+* ¿Qué significan las opciones que ha usado (_-hda_, _-boot_, _-cdrom_, _-m_) ?
+* ¿Por qué es necesaria la opción _-boot_ con el parámetro *d*?
 * A cambiado el tamaño del fichero `virtual.img`?
-** Por que tiene ese tamaño?
+** ¿Por qué tiene ese tamaño?
 ====
+
 
 
 === Instalación del sistema operativo huésped
 
-Inicie nuevamente la maquina virtual con el comando descrito anteriormente y
+Inicie nuevamente la máquina virtual con el comando descrito anteriormente y
 proceda a realizar la instalación del sistema operativo cuya imagen ha
 arrancado.
 
-<<<
 
 ==== Responda
+====
+* ¿A cambiado el tamaño del fichero `virtual.img`?
+** ¿Por qué tiene ese tamaño?
+* ¿Dónde considera que se encuentra instalado el sistema operativo huésped?
+* Remueva los permisos de lectura de `virtual.img` con
+
+    $ chmod -r virtual.img.
+
+* ¿Puede arrancar el sistema huésped ahora?. ¿Por qué?
+* Agregue permisos de lectura a `virtual.img` con
+
+    $ chmod +r virtual.img.
 
 ====
-* A cambiado el tamaño del fichero `virtual.img`?
-** Por que tiene ese tamaño?
-* Donde considera que se encuentra instalado el sistema operativo huésped?
-* Remueva los permisos de lectura de `virtual.img`. Puede arrancar el sistema
-    huésped ahora?. ¿Por qué?
-====
 
 
-Ahora que el sistema operativo huesped está instalado puede arrancar la maquina
-virtual con:
+Ahora que el sistema operativo huésped está instalado puede arrancar la máquina
+virtual con
 
     $ qemu -m 512 -hda virtual.img
 
-<<<
 
 ==== Responda
+====
+* ¿Por qué el comando de arranque ha cambiado?
+** ¿Considera que la opción _-cdrom_ es necesaria ahora?. ¿Por qué?
+* ¿Cómo puede especificar la distribución de teclado de la máquina virtual?
+* ¿Cómo iniciaría la máquina virtual en pantalla completa?
+* Intente mover el fichero `virtual.img` a otro directorio. ¿Puede arrancar la
+  máquina virtual desde ahí? ¿Por qué?
+====
 
-====
-* Por que el comando de arranque ha cambiado?
-** Considera que la opción _-cdrom_ es necesaria ahora?. ¿Por qué?
-* Como puede especificar la distribución de teclado de la maquina virtual?
-* Como iniciaría la maquina virtual en pantalla completa?
-* Escriba un shell script que le permita iniciar su maquina virtual.
-** El script deberá recibir como parámetro _opcional_ la distribución de
-teclado.
-* Intente mover el fichero `virtual.img` a otro directorio. Puede arrancar la
-  maquina virtual desde ahí?
-====
+<<<
+
+=== Conclusiones
+
+Escriba a continuación los resultados de su práctica
