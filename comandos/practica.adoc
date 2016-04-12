@@ -1,0 +1,223 @@
+= Introducción a la interfaz de linea de comandos
+Universidad de Cuenca - Sistemas Operativos I
+:hardbreaks:
+:numbered:
+:icons: font
+
+
+== Objetivos
+
+1. Familiarizarse con la interfaz de linea de comandos y adquirir la capacidad
+de realizar operaciones elementales con ella.
+
+2. Contrastar las acciones que se llevan a cabo desde una interfaz gráfica a su
+equivalente desde la linea de comandos.
+
+
+== Instrucciones
+
+=== Un emulador gráfico de terminal
+
+Busque el emulador de terminal en su sistema, probablemente aparecerá listado
+como un programa más. Ejecútelo y familiarícese con él y examine las opciones
+disponibles en el menú de configuraciones.
+
+NOTE: Su emulador de terminal puede tener una barra de menú, o la capacidad de
+desplegar uno al hacer Click derecho con el mouse.
+
+Ajuste las opciones disponibles a su gusto
+
+* Color de fondo
+* Color de fuente
+* Fuente
+* Tamaño de fuente
+
+NOTE: El carácter `$`, conocido como _"prompt"_ es usado para indicar
+que el texto a continuación es un comando.
+
+==== Responda
+====
+* Intente escribir su nombre en la terminal y pulsar *Enter* ¿Qué ocurre?
+* Ejecute el comando `$ ls` ¿Qué ocurre?
+* Ejecute el comando `$ clear` ¿Qué ocurre? ¿Cuál es la utilidad de esto?
+* Cierre su terminal usando el comando `$ exit`
+====
+
+TIP: Puede cancelar (_interrumpir_) la ejecución de un comando pulsando la
+combinación de teclas `ctrl + x`
+
+
+== Control del sistema de ficheros
+
+=== Desplazándose
+
+* *pwd*: _Print Woring Directory_, le permitirá conocer en qué directorio se
+    encuentra posicionado actualmente
+* *cd*: _Change Directory_, le permitirá cambiar su directorio actual
+* *ls*: _List_, le permitirá listar el contenido del directorio actual
+
+
+==== Responda
+====
+* Utilice el comando `$ pwd` ¿En qué directorio se encuentra cuando inicia una
+    nueva terminal?
+* Ejecute `$ cd ..` ¿En qué directorio se encuentra ahora?
+** Liste el contenido con `$ ls` ¿Puede ver el directorio donde se encontraba al
+    principio?
+* Ejecute el comando `$ cd` (sin argumentos) ¿Qué ha ocurrido?
+* Muévase un par de directorios hacia atrás con `$ cd ../../` ¿En qué directorio
+    se encuentra ahora?
+** Ejecute `$ cd ~` ¿Qué ha ocurrido? ¿Qué significa el argumento *~*?
+* Diríjase a la raíz del sistema de ficheros (*/*) con el comando `$ cd /` y
+    liste su contenido ¿Qué directorios le resultan familiares?
+* Busque su carpeta personal en el entorno gráfico ¿Cómo puede llegar ahí usando
+    la terminal? ¿Qué relación tiene con el argumento *~* de *cd*?
+====
+
+
+=== Tipos de rutas
+
+Puede usar el comando `cd` especificando rutas *absolutas* o *relativas*.
+
+Una ruta *absoluta* empieza con el carácter `/`, es decir especifica la ruta
+exacta empezando por la raíz del sistema de ficheros.
+
+Una ruta *relativa* empieza con el nombre del directorio directamente accesible
+desde la ubicación actual.
+
+==== Responda
+====
+* Ejecute el comando `$ cd`
+** ¿Qué ocurre si ejecuta `$ cd bin`? Explique
+** ¿Cómo su ubicaría en el directorio *bin* del sistema?
+====
+
+=== Creación y control de directorios
+
+* *mkdir*: _Make Directory_, le permitirá crear un directorio
+* *rmdir*: _Remove Directory_, le permitirá eliminar directorios vacíos
+* *rm*: _Remove_, le permitirá eliminar ficheros
+
+==== Responda
+====
+* Ubíquese en su directorio personal ¿Qué comando usó?
+* Agregue un directorio de nombre "abc" ¿Qué comando usó?
+** Ubíquese dentro del directorio "abc"
+** Agregue un nuevo directorio de nombre "xyz"
+** Regrese a su carpeta personal e intente eliminar el directorio "abc" con `$
+    rmdir abc` ¿Qué ha ocurrido? ¿Por qué?
+*** ¿Cómo eliminaría el directorio "abc"?
+====
+
+
+=== Enlaces
+
+Los enlaces permiten otorgar a un fichero o directorio múltiples nombres. Pueden
+ser de dos tipos:
+
+* *Enlaces fuertes:* Apuntan a los mismos datos sobre el sistema de ficheros
+* *Enlaces simbólicos:* Contienen la ruta del fichero que enlazan
+
+El comando usado para crear enlaces, tanto fuertes como simbólicos es `$ ln`.
+
+==== Responda
+====
+* Ubíquese en su directorio personal
+* Agregue un fichero de nombre "abc" con el comando `$ touch abc`
+** Escriba su nombre dentro de "abc" con el comando `$ echo "Nombre" > abc`
+*** Use el comando `$ file abc` ¿Qué tipo de fichero es "abc"?
+** Agregue un enlace fuerte a "abc" con el comando `$ ln abc cba`
+**** ¿Qué tipo de fichero es "cba"?
+** Agregue un enlace simbólico a "abc" con el comando `$ ln -s abc sym`
+**** ¿Qué tipo de fichero es "sym"?
+** ¿Qué puede decir sobre los enlaces fuertes y simbólicos basado en los tipos
+    de ficheros de "cba" y "sym"?
+* Elimine todos los ficheros creados ¿Qué comando usó?
+* Agregue un directorio de nombre "dir" ¿Qué comando usó?
+** Agregue un enlace fuerte para "dir", de nombre "fuerte" con el comando `$ ln
+    dir fuerte` ¿Qué ocurrió?
+** ¿Puede crear un enlace simbólico de nombre "sym" para el directorio "dir"?
+    ¿Qué comando usó?
+** ¿A qué conclusión puede llegar con esto?
+* ¿Para que cree usted que son útiles los enlaces?
+====
+
+
+== Permisos y Control del sistema
+
+=== Propietarios y Permisos
+
+Todo fichero Unix, al igual que los directorios, pertenecen a un usuario y grupo
+en particular.
+
+==== Responda
+====
+* Use el comando `$ ls -l` en su directorio _home_
+** Investigue: ¿Cuál es el propietario y grupo de los ficheros listados?
+====
+
+Los ficheros y directorios cuentan además con una serie de permisos que permiten
+controlar los accesos de lectura, escritura y ejecución especifica para ciertos
+usuarios y grupos. En esta práctica vamos a concentrarnos en el uso de los
+comandos. Si necesita recordar al respecto puede revisar:
+http://www.estrellateyarde.org/usuarios-y-permisos-en-linux/propietarios-y-permisos-en-linux
+
+* *chmod*: _Change Mode_, Permite modificar los permisos de ficheros y
+    directorios
+* *chown*: _Change Owner_, Permite modificar el usuario y grupo propietario de
+    ficheros y directorios
+
+
+==== Responda
+====
+* Agregue un directorio de nombre "dir" en su directorio _home_
+** Use el comando `$ ls -l` en su directorio _home_ ¿Cuales son los permisos del
+    directorio "dir"? Explique
+* Use el comando `$ chmod -x dir` ¿Qué hace este comando?
+** Intente acceder a "dir" con el comando `$ cd dir` ¿Qué ocurrió? Explique
+* Agregue un fichero con su nombre usando el comando `$ echo "Nombre" > fichero`
+** ¿Qué permisos tiene _"fichero"_ por defecto?
+** ¿Cómo puede permitir a cualquier usuario escribir sobre este fichero?
+* Use el comando `$ chown usuario:users` (donde *usuario* es su nombre de
+    usuario)
+** ¿Qué a logrado con este comando?
+** ¿Qué puede conocer al respecto con el comando `$ ls -l`?
+* Usted desea mantener un directorio de tareas común para su grupo de trabajo,
+    al cual únicamente su grupo tendrá acceso de lectura y escritura, además
+    desea que los fisgones no puedan listar el contenido de dicho directorio.
+** ¿Qué comando usará?
+** Explique que permisos son necesarios
+** ¿Cómo se traduce eso a argumentos del comando usado?
+====
+
+
+=== Apagando y reiniciando el sistema
+
+* *shutdown*: Permite apagar/reiniciar el sistema de forma segura, informando a
+    los usuarios conectados e impidiendo el ingreso de usuarios
+
+WARNING: Asegúrese de guardar todo documento sensible antes de usar el comando
+`shutdown`
+
+==== Responda
+====
+* ¿Qué ocurre al ejecutar el comando *shutdown* sin argumentos?
+* Investigue: ¿Qué argumento es necesario para reiniciar el sistema en lugar de
+    apagarlo?
+* ¿Qué ocurre al ejecutar el comando `$ shutdown -t 10`?
+** ¿Qué utilidad se le ocurre para esto?
+====
+
+
+<<<
+
+=== Conclusiones
+
+Escriba a continuación los resultados de su práctica
+
+<<<
+
+=== Referencias
+
+Liste aquí todas las referencias de las citas que haya puesto en el documento.
+Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
