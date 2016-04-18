@@ -1,4 +1,4 @@
-= Introducción a la interfaz de linea de comandos
+= Introducción a la interfaz de línea de comandos
 Universidad de Cuenca - Sistemas Operativos I
 :hardbreaks:
 :numbered:
@@ -7,54 +7,61 @@ Universidad de Cuenca - Sistemas Operativos I
 
 == Objetivos
 
-1. Familiarizarse con la interfaz de linea de comandos y adquirir la capacidad
-de realizar operaciones elementales con ella.
+1. Tener una primera aproximación con la interfaz de línea de comandos de un
+    sistema basado en Unix.
 
-2. Contrastar las acciones que se llevan a cabo desde una interfaz gráfica a su
-equivalente desde la linea de comandos.
+2. Adquirir la capacidad de realizar operaciones elementales con el emulador de
+    terminal.
+
+3. Contrastar las acciones que se llevan a cabo desde una interfaz gráfica a su
+    equivalente desde la línea de comandos.
 
 
 == Instrucciones
 
-=== Un emulador gráfico de terminal
+=== Emulador gráfico de terminal
 
-Busque el emulador de terminal en su sistema, probablemente aparecerá listado
-como un programa más. Ejecútelo y familiarícese con él y examine las opciones
+Busque el emulador de terminal en su sistema. Probablemente aparecerá listado
+como un programa más. Ejecútelo, familiarícese con él y examine las opciones
 disponibles en el menú de configuraciones.
 
-NOTE: Su emulador de terminal puede tener una barra de menú, o la capacidad de
-desplegar uno al hacer Click derecho con el mouse.
+TIP: En algunos sistemas el emulador (e.g., Ubuntu) de terminal se abre con
+    `ctrl + alt + t`.
 
-Ajuste las opciones disponibles a su gusto
+NOTE: Su emulador de terminal puede tener una barra de menú o la capacidad de
+    desplegar uno al hacer Click derecho con el ratón.
+
+Ajuste las opciones disponibles a su gusto:
 
 * Color de fondo
 * Color de fuente
 * Fuente
 * Tamaño de fuente
 
-NOTE: El carácter `$`, conocido como _"prompt"_ es usado para indicar
-que el texto a continuación es un comando.
+NOTE: El carácter `$` (_"prompt"_) es usado para indicar que el texto a
+    continuación es un comando.
 
 ==== Responda
 ====
-* Intente escribir su nombre en la terminal y pulsar *Enter* ¿Qué ocurre?
-* Ejecute el comando `$ ls` ¿Qué ocurre?
-* Ejecute el comando `$ clear` ¿Qué ocurre? ¿Cuál es la utilidad de esto?
-* Cierre su terminal usando el comando `$ exit`
+* Escriba su nombre en la terminal y pulse *Enter*. ¿Qué ocurre?
+* Ejecute el comando `$ ls` ¿Qué ocurre? ¿Cuál es la utilidad del comando?
+* Ejecute el comando `$ clear` ¿Qué ocurre? ¿Cuál es la utilidad del comando?
 ====
 
+NOTE: Puede terminar la sesión de usuario utilizando el comando `$ exit`.
+
 TIP: Puede cancelar (_interrumpir_) la ejecución de un comando pulsando la
-combinación de teclas `ctrl + x`
+    combinación de teclas `ctrl + x`.
 
 
-== Control del sistema de ficheros
+== Control del sistema de archivos
 
 === Desplazándose
 
-* *pwd*: _Print Woring Directory_, le permitirá conocer en qué directorio se
-    encuentra posicionado actualmente
-* *cd*: _Change Directory_, le permitirá cambiar su directorio actual
-* *ls*: _List_, le permitirá listar el contenido del directorio actual
+* *pwd* (_Print Woring Directory_): permite conocer en qué directorio se
+    encuentra.
+* *cd* (_Change Directory_): permite cambiar a un directorio específico.
+* *ls* (_List_): permite listar el contenido de un directorio.
 
 
 ==== Responda
@@ -68,8 +75,8 @@ combinación de teclas `ctrl + x`
 * Muévase un par de directorios hacia atrás con `$ cd ../../` ¿En qué directorio
     se encuentra ahora?
 ** Ejecute `$ cd ~` ¿Qué ha ocurrido? ¿Qué significa el argumento *~*?
-* Diríjase a la raíz del sistema de ficheros (*/*) con el comando `$ cd /` y
-    liste su contenido ¿Qué directorios le resultan familiares?
+* Diríjase a la raíz del sistema de archivos (`/`) con el comando `$ cd /` y
+    liste su contenido. ¿Qué directorios le resultan familiares?
 * Busque su carpeta personal en el entorno gráfico ¿Cómo puede llegar ahí usando
     la terminal? ¿Qué relación tiene con el argumento *~* de *cd*?
 ====
@@ -77,13 +84,10 @@ combinación de teclas `ctrl + x`
 
 === Tipos de rutas
 
-Puede usar el comando `cd` especificando rutas *absolutas* o *relativas*.
-
-Una ruta *absoluta* empieza con el carácter `/`, es decir especifica la ruta
-exacta empezando por la raíz del sistema de ficheros.
-
-Una ruta *relativa* empieza con el nombre del directorio directamente accesible
-desde la ubicación actual.
+Puede usar el comando `cd` especificando rutas *absolutas* o *relativas*. Una
+ruta *absoluta* empieza con el carácter `/`, es decir especifica la ruta exacta
+empezando por la raíz del sistema de archivos. Una ruta *relativa* empieza con
+el nombre del directorio directamente accesible desde la ubicación actual.
 
 ==== Responda
 ====
@@ -94,9 +98,9 @@ desde la ubicación actual.
 
 === Creación y control de directorios
 
-* *mkdir*: _Make Directory_, le permitirá crear un directorio
-* *rmdir*: _Remove Directory_, le permitirá eliminar directorios vacíos
-* *rm*: _Remove_, le permitirá eliminar ficheros
+* *mkdir* (_Make Directory_): crea un directorio.
+* *rmdir* (_Remove Directory_): elimina directorios vacíos.
+* *rm* (_Remove_): elimina archivos.
 
 ==== Responda
 ====
@@ -104,120 +108,158 @@ desde la ubicación actual.
 * Agregue un directorio de nombre "abc" ¿Qué comando usó?
 ** Ubíquese dentro del directorio "abc"
 ** Agregue un nuevo directorio de nombre "xyz"
-** Regrese a su carpeta personal e intente eliminar el directorio "abc" con `$
-    rmdir abc` ¿Qué ha ocurrido? ¿Por qué?
+** Regrese a su carpeta personal e intente eliminar el directorio "abc" con
+    `$ rmdir abc` ¿Qué ha ocurrido? ¿Por qué?
 *** ¿Cómo eliminaría el directorio "abc"?
+* ¿Qué comando(s) utilizaría para buscar un archivo en un directorio?
+* ¿Qué comando(s) utilizaría para renombrar un archivo o un directorio?
 ====
 
 
 === Enlaces
 
-Los enlaces permiten otorgar a un fichero o directorio múltiples nombres. Pueden
+Los enlaces permiten otorgar a un archivo o directorio múltiples nombres. Pueden
 ser de dos tipos:
 
-* *Enlaces fuertes:* Apuntan a los mismos datos sobre el sistema de ficheros
-* *Enlaces simbólicos:* Contienen la ruta del fichero que enlazan
+* *Enlaces fuertes*: apuntan a los mismos datos sobre el sistema de archivos.
+* *Enlaces simbólicos*: contienen la ruta del archivo que enlazan.
 
-El comando usado para crear enlaces, tanto fuertes como simbólicos es `$ ln`.
+El comando usado para crear enlaces (fuertes o simbólicos) es `$ ln`.
 
 ==== Responda
 ====
-* Ubíquese en su directorio personal
-* Agregue un fichero de nombre "abc" con el comando `$ touch abc`
-** Escriba su nombre dentro de "abc" con el comando `$ echo "Nombre" > abc`
-*** Use el comando `$ file abc` ¿Qué tipo de fichero es "abc"?
+* Agregue un archivo de nombre "abc" con el comando `$ touch abc`.
+** Escriba su nombre dentro de "abc" con el comando `$ echo "Nombre" > abc`.
+*** ¿Qué tipo de archivo es "abc"?
 ** Agregue un enlace fuerte a "abc" con el comando `$ ln abc cba`
-**** ¿Qué tipo de fichero es "cba"?
+**** ¿Qué tipo de archivo es "cba"?
 ** Agregue un enlace simbólico a "abc" con el comando `$ ln -s abc sym`
-**** ¿Qué tipo de fichero es "sym"?
+**** ¿Qué tipo de archivo es "sym"?
 ** ¿Qué puede decir sobre los enlaces fuertes y simbólicos basado en los tipos
-    de ficheros de "cba" y "sym"?
-* Elimine todos los ficheros creados ¿Qué comando usó?
-* Agregue un directorio de nombre "dir" ¿Qué comando usó?
-** Agregue un enlace fuerte para "dir", de nombre "fuerte" con el comando `$ ln
-    dir fuerte` ¿Qué ocurrió?
+    de archivos de "cba" y "sym"? Discuta.
+* Elimine todos los archivos creados. ¿Qué comando usó?
+* Agregue un directorio de nombre "dir". ¿Qué comando usó?
+** Agregue un enlace fuerte para "dir", de nombre "fuerte" con el comando
+    `$ ln dir fuerte`. ¿Qué ocurrió?
 ** ¿Puede crear un enlace simbólico de nombre "sym" para el directorio "dir"?
     ¿Qué comando usó?
-** ¿A qué conclusión puede llegar con esto?
-* ¿Para que cree usted que son útiles los enlaces?
+** ¿A qué conclusión puede llegar con esto? Discuta.
+* ¿Para qué cree que son útiles los enlaces? Dé ejemplos puntuales.
 ====
 
+=== Montaje de directorios
+
+Lea la sección _10.6.1 Fundamental Concepts_ del subcapítulo _THE LINUX FILE
+SYSTEM_ del libro de Tanenbaum y Bos (2014).
+
+==== Responda
+====
+* Discuta el proceso de montaje de directorios en su sistema operativo (cómo se
+    lo programa para que sea automático, qué hacer para modificar el proceso de
+    montaje, etc).
+* ¿Cuáles son los comandos más importantes en esta tarea?
+====
 
 == Permisos y Control del sistema
 
-=== Propietarios y Permisos
+=== Propietarios y permisos
 
-Todo fichero Unix, al igual que los directorios, pertenecen a un usuario y grupo
-en particular.
+Todo archivo y directorio Unix pertenece a un usuario y grupo en particular.
 
 ==== Responda
 ====
-* Use el comando `$ ls -l` en su directorio _home_
-** Investigue: ¿Cuál es el propietario y grupo de los ficheros listados?
+* Use el comando `$ ls -l` en su directorio _home_.
+** ¿Cuál es el propietario y grupo de los archivos listados?
 ====
 
-Los ficheros y directorios cuentan además con una serie de permisos que permiten
-controlar los accesos de lectura, escritura y ejecución especifica para ciertos
+Los archivos y directorios cuentan además con una serie de permisos que permiten
+controlar los accesos de lectura, escritura y ejecución especifíca para ciertos
 usuarios y grupos. En esta práctica vamos a concentrarnos en el uso de los
-comandos. Si necesita recordar al respecto puede revisar:
-http://www.estrellateyarde.org/usuarios-y-permisos-en-linux/propietarios-y-permisos-en-linux
+comandos. Si necesita recordar al respecto puede revisar la sección _6.4.2
+Modelo tradicional Unix_ del libro de Wolf _et al._ (2015) o la página web
+http://www.estrellateyarde.org/usuarios-y-permisos-en-linux/propietarios-y-permisos-en-linux[Propietarios
+y permisos en Linux].
 
-* *chmod*: _Change Mode_, Permite modificar los permisos de ficheros y
-    directorios
-* *chown*: _Change Owner_, Permite modificar el usuario y grupo propietario de
-    ficheros y directorios
+* *chmod* (_Change Mode_): modifica los permisos de archivos y directorios.
+* *chown* (_Change Owner_): modifica el usuario y grupo propietario de archivos
+    y directorios.
 
 
 ==== Responda
 ====
-* Agregue un directorio de nombre "dir" en su directorio _home_
-** Use el comando `$ ls -l` en su directorio _home_ ¿Cuales son los permisos del
-    directorio "dir"? Explique
+* Agregue un directorio de nombre "dir" en su directorio _home_.
+** Use el comando `$ ls -l` en su directorio _home_ ¿Cuáles son los permisos del
+    directorio "dir"? Explique con detalle.
 * Use el comando `$ chmod -x dir` ¿Qué hace este comando?
-** Intente acceder a "dir" con el comando `$ cd dir` ¿Qué ocurrió? Explique
-* Agregue un fichero con su nombre usando el comando `$ echo "Nombre" > fichero`
-** ¿Qué permisos tiene _"fichero"_ por defecto?
-** ¿Cómo puede permitir a cualquier usuario escribir sobre este fichero?
+** Intente acceder a "dir" con el comando `$ cd dir` ¿Qué ocurrió? Explique.
+* Agregue un archivo con su nombre usando el comando
+    `$ echo "Nombre" > archivo`.
+** ¿De qué tipo es _"archivo"_?
+** ¿Qué permisos tiene _"archivo"_ por defecto?
+** ¿Cómo puede permitir a cualquier usuario escribir sobre este archivo?
 * Use el comando `$ chown usuario:users` (donde *usuario* es su nombre de
-    usuario)
-** ¿Qué a logrado con este comando?
+    usuario).
+** ¿Qué ha logrado con este comando?
 ** ¿Qué puede conocer al respecto con el comando `$ ls -l`?
-* Usted desea mantener un directorio de tareas común para su grupo de trabajo,
-    al cual únicamente su grupo tendrá acceso de lectura y escritura, además
-    desea que los fisgones no puedan listar el contenido de dicho directorio.
-** ¿Qué comando usará?
-** Explique que permisos son necesarios
-** ¿Cómo se traduce eso a argumentos del comando usado?
+* Suponga el siguiente caso de uso. Usted desea mantener un directorio de tareas
+    común para su grupo de trabajo, al cual únicamente su grupo tendrá acceso de
+    lectura y escritura, además desea que los fisgones no puedan listar el
+    contenido de dicho directorio.
+** ¿Qué comando debe usar?
+** ¿Qué permisos son necesarios? Discuta.
+** ¿Cómo se traduce lo anterior a argumentos del comando usado?
 ====
 
 
 === Apagando y reiniciando el sistema
 
-* *shutdown*: Permite apagar/reiniciar el sistema de forma segura, informando a
-    los usuarios conectados e impidiendo el ingreso de usuarios
+* *shutdown*: apaga/reinicia el sistema de forma segura, informando a los
+    usuarios conectados e impidiendo el ingreso de usuarios.
 
 WARNING: Asegúrese de guardar todo documento sensible antes de usar el comando
-`shutdown`
+    `shutdown`.
 
 ==== Responda
 ====
 * ¿Qué ocurre al ejecutar el comando *shutdown* sin argumentos?
-* Investigue: ¿Qué argumento es necesario para reiniciar el sistema en lugar de
-    apagarlo?
+* ¿Qué argumento es necesario para reiniciar el sistema en lugar de apagarlo?
 * ¿Qué ocurre al ejecutar el comando `$ shutdown -t 10`?
 ** ¿Qué utilidad se le ocurre para esto?
 ====
 
+==== Apagado de sistema mediante un script
+
+Para automatizar el apagado del sistema se propone utilizar el _Método 2:
+Programar el apagado del ordenador mediante un script_ explicado en la entrada
+de blog http://geekland.eu/programar-el-apagado-del-ordenador/[_Programar el
+apagado del ordenador_].
+
+===== Responda
+====
+* ¿Qué es un script?
+* Haga una discusión acerca de la primera línea que se encuentra en el archivo
+    (`#!/bin/bash`).
+* ¿Qué significa el número a continuación del comando `exit`? ¿Qué valores
+    pueden utilizarse?
+* ¿Qué otras opciones se pueden utilizar luego del comando `chmod` (a parte de
+    `+x`)?
+* ¿Se podría ejecutar el script con `sh apagar.sh`? Discuta.
+====
 
 <<<
 
 === Conclusiones
 
-Escriba a continuación los resultados de su práctica
+NOTE: Escriba los principales resultados y conclusiones de su práctica.
 
 <<<
 
 === Referencias
+* Tanenbaum, A.S., Bos, H., 2014. Modern Operating Systems, 4th ed. Pearson,
+    Boston, USA.
+* Wolf, G., Ruiz, E., Bergero, F., Meza, E., 2015. Fundamentos de Sistemas
+    Operativos, 1st ed. Universidad Nacional Autónoma de México, México D.F.,
+    México.
 
-Liste aquí todas las referencias de las citas que haya puesto en el documento.
-Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
+NOTE: Liste aquí todas las referencias de las citas que haya puesto en el
+documento. Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
