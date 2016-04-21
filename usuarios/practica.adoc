@@ -50,6 +50,31 @@ TIP: Para ejecutar algunos comandos podría necesitar anteponerlo con *sudo*
 * *useradd* (_User Add_): permite agregar usuarios al sistema.
 * *groupadd* (_Group Add_): permite agregar grupos al sistema.
 * *passwd* (_Password_): permite asignar contraseñas para los usuarios.
+* *usermod* (_User Modify_): permite modificar usuarios.
+* *groupmod* (_Group Modify_): permite modificar grupos.
+
+
+===== Responda
+====
+* Cree un nuevo usuario de nombre **user1** ¿Qué comando usó?
+** Examine el contenido del fichero **passwd** con el comando
+    `$ cat /etc/passwd` y encuentre el usuario que agregó
+** ¿Qué identificador de usuario y grupo tiene el nuevo usuario?
+** ¿Cuál es el directorio home de **user1** ?
+* Cree un nuevo usuario de nombre **user2**, pero esta vez con el comando
+    `$ useradd -m user2`
+** ¿Existe el directorio `/home/user2`?
+*** ¿Cuál es su propietario y grupo?
+*** Cual es la relación entre este directorio y la nueva información en
+    `/etc/passwd`?
+* Asigne un password **pass** a **user1** y **user2**
+** ¿Qué comando usó?
+* Cree un nuevo grupo de usuarios de nombre **equipo** ¿Qué comando usó?
+** Agregue **user1** al grupo **equipo** con el comando
+    `$ usermod -G equipo user1`.
+** Repita para **user2**
+*** ¿En qué fichero se han reflejado estos cambios?
+====
 
 
 === Propietarios y permisos
