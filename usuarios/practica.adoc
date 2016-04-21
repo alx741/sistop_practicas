@@ -30,7 +30,7 @@ Todos ellos ubicados en el directorio `/etc/`
 TIP: Para ejecutar algunos comandos podría necesitar anteponerlo con *sudo*
     cuando no tenga los permisos necesarios
 
-===== Responda
+==== Responda
 ====
 * Revise el fichero *passwd* con el comando `cat /etc/passwd`
     ¿Encuentra algo familiar?
