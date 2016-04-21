@@ -1,0 +1,74 @@
+= Administración de usuarios y permisos
+Universidad de Cuenca - Sistemas Operativos I
+:hardbreaks:
+:numbered:
+:icons: font
+
+
+== Objetivos
+
+1. Adquirir el conocimiento y habilidades básicas de administración de
+    cuantas de usuario en el sistema
+
+2. Comprender la relación entre usuarios, grupos y permisos de acceso basados en
+    estos
+
+
+== Instrucciones
+
+=== Usuarios y Grupos
+
+Los sistemas operativos de tipo Unix almacenan sus usuarios e información sobre
+los mismos en tres ficheros:
+
+- passwd
+- shadow
+- group
+
+Todos ellos ubicados en el directorio `/etc/`
+
+TIP: Para ejecutar algunos comandos podría necesitar anteponerlo con *sudo*
+    cuando no tenga los permisos necesarios
+
+===== Responda
+====
+* Revise el fichero *passwd* con el comando `cat /etc/passwd`
+    ¿Encuentra algo familiar?
+** ¿Qué información está contenida en este fichero?
+* Revise el fichero *group* con el comando `cat /etc/group`
+    ¿Encuentra algo familiar?
+** ¿Qué información está contenida en este fichero?
+* Revise el fichero *shadow* con el comando `sudo cat /etc/shadow`
+    ¿Encuentra algo familiar? ¿Para qué se utiliza este fichero? ¿Qué relación
+    tiene con el fichero *passwd*? ¿Tiene esto alguna ventaja?
+** ¿Qué información está contenida en este fichero?
+====
+
+
+==== Creación de usuarios y grupos
+
+* *useradd* (_User Add_): permite agregar usuarios al sistema.
+* *groupadd* (_Group Add_): permite agregar grupos al sistema.
+* *passwd* (_Password_): permite asignar contraseñas para los usuarios.
+
+
+=== Permisos y accesos
+
+
+<<<
+
+=== Conclusiones
+
+NOTE: Escriba los principales resultados y conclusiones de su práctica.
+
+<<<
+
+=== Referencias
+* Tanenbaum, A.S., Bos, H., 2014. Modern Operating Systems, 4th ed. Pearson,
+    Boston, USA.
+* Wolf, G., Ruiz, E., Bergero, F., Meza, E., 2015. Fundamentos de Sistemas
+    Operativos, 1st ed. Universidad Nacional Autónoma de México, México D.F.,
+    México.
+
+NOTE: Liste aquí todas las referencias de las citas que haya puesto en el
+documento. Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
