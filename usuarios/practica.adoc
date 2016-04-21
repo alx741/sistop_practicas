@@ -52,7 +52,53 @@ TIP: Para ejecutar algunos comandos podría necesitar anteponerlo con *sudo*
 * *passwd* (_Password_): permite asignar contraseñas para los usuarios.
 
 
-=== Permisos y accesos
+=== Propietarios y permisos
+
+Todo archivo y directorio Unix pertenece a un usuario y grupo en particular.
+
+==== Responda
+====
+* Use el comando `$ ls -l` en su directorio _home_.
+** ¿Cuál es el propietario y grupo de los archivos listados?
+====
+
+Los archivos y directorios cuentan además con una serie de permisos que permiten
+controlar los accesos de lectura, escritura y ejecución especifíca para ciertos
+usuarios y grupos. En esta práctica vamos a concentrarnos en el uso de los
+comandos. Si necesita recordar al respecto puede revisar la sección _6.4.2
+Modelo tradicional Unix_ del libro de Wolf _et al._ (2015) o la página web
+http://www.estrellateyarde.org/usuarios-y-permisos-en-linux/propietarios-y-permisos-en-linux[Propietarios
+y permisos en Linux].
+
+* *chmod* (_Change Mode_): modifica los permisos de archivos y directorios.
+* *chown* (_Change Owner_): modifica el usuario y grupo propietario de archivos
+    y directorios.
+
+
+===== Responda
+====
+* Agregue un directorio de nombre "dir" en su directorio _home_.
+** Use el comando `$ ls -l` en su directorio _home_ ¿Cuáles son los permisos del
+    directorio "dir"? Explique con detalle.
+* Use el comando `$ chmod -x dir` ¿Qué hace este comando?
+** Intente acceder a "dir" con el comando `$ cd dir` ¿Qué ocurrió? Explique.
+* Agregue un archivo con su nombre usando el comando
+    `$ echo "Nombre" > archivo`.
+** ¿De qué tipo es _"archivo"_?
+** ¿Qué permisos tiene _"archivo"_ por defecto?
+** ¿Cómo puede permitir a cualquier usuario escribir sobre este archivo?
+* Use el comando `$ chown usuario:users` (donde *usuario* es su nombre de
+    usuario).
+** ¿Qué ha logrado con este comando?
+** ¿Qué puede conocer al respecto con el comando `$ ls -l`?
+* Suponga el siguiente caso de uso. Usted desea mantener un directorio de tareas
+    común para su grupo de trabajo, al cual únicamente su grupo tendrá acceso de
+    lectura y escritura, además desea que los fisgones no puedan listar el
+    contenido de dicho directorio.
+** ¿Qué comando debe usar?
+** ¿Qué permisos son necesarios? Discuta.
+** ¿Cómo se traduce lo anterior a argumentos del comando usado?
+====
 
 
 <<<
