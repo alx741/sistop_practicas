@@ -7,73 +7,76 @@ Universidad de Cuenca - Sistemas Operativos I
 
 == Objetivos
 
-1. Adquirir el conocimiento y habilidades básicas de administración de
-    cuantas de usuario en el sistema
-
-2. Comprender la relación entre usuarios, grupos y permisos de acceso basados en
-    estos
-
+1. Adquirir el conocimiento y habilidades básicas de administración de cuentas
+    de usuario en un sistema basado en Unix.
+2. Comprender la relación entre usuarios, grupos y permisos de acceso.
+3. Administrar permisos de lectura, escritura y ejecución de cada objeto en el
+    sistema de archivos en el modelo tradicional Unix.
 
 == Instrucciones
 
 === Usuarios y Grupos
 
-Los sistemas operativos de tipo Unix almacenan sus usuarios e información sobre
-los mismos en tres ficheros:
+Los sistemas operativos basados en Unix almacenan sus usuarios e información de
+los mismos en tres archivos:
 
 - passwd
 - shadow
 - group
 
-Todos ellos ubicados en el directorio `/etc/`
+Todos ellos ubicados en el directorio `/etc/`.
 
-TIP: Para ejecutar algunos comandos podría necesitar anteponerlo con *sudo*
-    cuando no tenga los permisos necesarios
+TIP: Para ejecutar algunos comandos podría necesitar anteponer `sudo` cuando no
+    tenga los permisos necesarios.
+
+NOTE: El comando `cat` concatena archivos y/o los muestra como salida. Revise la
+    entrada de blog https://goo.gl/JbpZ2U[El comando Cat en Unix].
 
 ==== Responda
 ====
-* Revise el fichero *passwd* con el comando `cat /etc/passwd`
-    ¿Encuentra algo familiar?
-** ¿Qué información está contenida en este fichero?
-* Revise el fichero *group* con el comando `cat /etc/group`
-    ¿Encuentra algo familiar?
-** ¿Qué información está contenida en este fichero?
-* Revise el fichero *shadow* con el comando `sudo cat /etc/shadow`
-    ¿Encuentra algo familiar? ¿Para qué se utiliza este fichero? ¿Qué relación
-    tiene con el fichero *passwd*? ¿Tiene esto alguna ventaja?
-** ¿Qué información está contenida en este fichero?
+* ¿Para qué sirve el comando `sudo`? Explique.
+* Revise el archivo *passwd* con el comando `cat /etc/passwd`. ¿Encuentra algo
+    familiar?
+** ¿Qué información está contenida en este archivo?
+* Revise el archivo *group* con el comando `cat /etc/group`. ¿Encuentra algo
+    familiar?
+** ¿Qué información está contenida en este archivo?
+* Revise el archivo *shadow* con el comando `sudo cat /etc/shadow`. ¿Encuentra
+    algo familiar? ¿Para qué se utiliza este archivo? ¿Qué relación tiene con el
+    archivo *passwd*? ¿Tiene esto alguna ventaja?
+** ¿Qué información está contenida en este archivo?
 ====
 
 
 ==== Creación de usuarios y grupos
 
-* *useradd* (_User Add_): permite agregar usuarios al sistema.
-* *groupadd* (_Group Add_): permite agregar grupos al sistema.
-* *passwd* (_Password_): permite asignar contraseñas para los usuarios.
-* *usermod* (_User Modify_): permite modificar usuarios.
-* *groupmod* (_Group Modify_): permite modificar grupos.
+* *useradd* (_User Add_): agrega usuarios al sistema.
+* *groupadd* (_Group Add_): agrega grupos al sistema.
+* *passwd* (_Password_): asigna contraseñas a los usuarios.
+* *usermod* (_User Modify_): modifica usuarios.
+* *groupmod* (_Group Modify_): modifica grupos.
 
 
 ===== Responda
 ====
-* Cree un nuevo usuario de nombre **user1** ¿Qué comando usó?
-** Examine el contenido del fichero **passwd** con el comando
-    `$ cat /etc/passwd` y encuentre el usuario que agregó
+* Cree un nuevo usuario de nombre **user1** ¿Qué comando(s) usó?
+** Examine el contenido del archivo **passwd** con el comando `$ cat
+    /etc/passwd` y encuentre el usuario que agregó.
 ** ¿Qué identificador de usuario y grupo tiene el nuevo usuario?
-** ¿Cuál es el directorio home de **user1** ?
-* Cree un nuevo usuario de nombre **user2**, pero esta vez con el comando
-    `$ useradd -m user2`
+** ¿Cuál es el directorio _home_ de **user1**?
+* Cree un nuevo usuario de nombre **user2**, pero esta vez con el comando `$
+    useradd -m user2`
 ** ¿Existe el directorio `/home/user2`?
 *** ¿Cuál es su propietario y grupo?
-*** Cual es la relación entre este directorio y la nueva información en
+*** ¿Cuál es la relación entre este directorio y la nueva información en
     `/etc/passwd`?
-* Asigne un password **pass** a **user1** y **user2**
-** ¿Qué comando usó?
-* Cree un nuevo grupo de usuarios de nombre **equipo** ¿Qué comando usó?
-** Agregue **user1** al grupo **equipo** con el comando
-    `$ usermod -G equipo user1`.
-** Repita para **user2**
-*** ¿En qué fichero se han reflejado estos cambios?
+* Asigne una contraseña **pass** a **user1** y **user2**.
+** ¿Qué comando(s) usó?
+* Cree un nuevo grupo de usuarios de nombre **equipo**. ¿Qué comando(s) usó?
+** Agregue **user1** al grupo **equipo** con el comando `$ usermod -G equipo
+    user1`.
+** Repita para **user2**.
+*** ¿En qué archivo se han reflejado estos cambios?
 ====
 
 
@@ -87,11 +90,11 @@ Todo archivo y directorio Unix pertenece a un usuario y grupo en particular.
 ** ¿Cuál es el propietario y grupo de los archivos listados?
 ====
 
-Los archivos y directorios cuentan además con una serie de permisos que permiten
-controlar los accesos de lectura, escritura y ejecución especifíca para ciertos
-usuarios y grupos. En esta práctica vamos a concentrarnos en el uso de los
-comandos. Si necesita recordar al respecto puede revisar la sección _6.4.2
-Modelo tradicional Unix_ del libro de Wolf _et al._ (2015) o la página web
+Además, los archivos y directorios cuentan con una serie de permisos que
+controlan los accesos de lectura, escritura y ejecución para usuarios y grupos
+específicos. En esta práctica vamos a concentrarnos en el uso de los comandos.
+Si necesita recordar al respecto puede revisar la sección _6.4.2 Modelo
+tradicional Unix_ del libro de Wolf _et al._ (2015) o la página web
 http://www.estrellateyarde.org/usuarios-y-permisos-en-linux/propietarios-y-permisos-en-linux[Propietarios
 y permisos en Linux].
 
@@ -105,22 +108,22 @@ y permisos en Linux].
 * Agregue un directorio de nombre "dir" en su directorio _home_.
 ** Use el comando `$ ls -l` en su directorio _home_ ¿Cuáles son los permisos del
     directorio "dir"? Explique con detalle.
-* Use el comando `$ chmod -x dir` ¿Qué hace este comando?
+* Use el comando `$ chmod -x dir` ¿Qué hace este comando? Explique con detalle.
 ** Intente acceder a "dir" con el comando `$ cd dir` ¿Qué ocurrió? Explique.
-* Agregue un archivo con su nombre usando el comando
-    `$ echo "Nombre" > archivo`.
+* Agregue un archivo con su nombre usando el comando `$ echo "Nombre" >
+    archivo`.
 ** ¿De qué tipo es _"archivo"_?
 ** ¿Qué permisos tiene _"archivo"_ por defecto?
 ** ¿Cómo puede permitir a cualquier usuario escribir sobre este archivo?
 * Use el comando `$ chown usuario:users` (donde *usuario* es su nombre de
     usuario).
-** ¿Qué ha logrado con este comando?
+** ¿Qué ha logrado con este comando? Explique.
 ** ¿Qué puede conocer al respecto con el comando `$ ls -l`?
 * Suponga el siguiente caso de uso. Usted desea mantener un directorio de tareas
     común para su grupo de trabajo, al cual únicamente su grupo tendrá acceso de
     lectura y escritura, además desea que los fisgones no puedan listar el
     contenido de dicho directorio.
-** ¿Qué comando debe usar?
+** ¿Qué comando(s) debe usar?
 ** ¿Qué permisos son necesarios? Discuta.
 ** ¿Cómo se traduce lo anterior a argumentos del comando usado?
 ====
@@ -142,4 +145,5 @@ NOTE: Escriba los principales resultados y conclusiones de su práctica.
     México.
 
 NOTE: Liste aquí todas las referencias de las citas que haya puesto en el
-documento. Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
+    documento. Se recomienda, mas no se obliga, usar
+    https://www.zotero.org[Zotero].
