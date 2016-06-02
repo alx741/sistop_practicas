@@ -1,0 +1,121 @@
+= Administración de memoria
+Universidad de Cuenca - Sistemas Operativos I
+:hardbreaks:
+:numbered:
+:icons: font
+
+
+== Objetivos
+
+1. Adquirir el conocimiento y habilidades básicas de administración de memoria
+    en un sistema operativo basado en Unix.
+
+2. Familiarizarse con el consumo y control de memoria del sistema para
+    monitorizar su estrés.
+
+
+== Instrucciones
+
+=== Memoria
+
+Cuando hablamos de *"memoria"* nos referimos exclusivamente a la *"memoria
+RAM"* del sistema.
+
+Como parte de su estudio, recordará que en un sistema de memoria virtual
+paginada, varías paginas que no están siendo usadas serán almacenadas en un
+dispositivo de almacenamiento no volátil como lo es el *Disco Duro* de la
+computadora en una partición de tipo *swap*. Conocer el estado de uso y control
+de la memoria y swap nos proporcionará mayor control sobre el sistema.
+
+
+=== /proc/meminfo
+
+El fichero virtual **meminfo**, proporcionado por el kernel, ofrece información
+detallada sobre la memoria del sistema.
+
+==== Responda
+====
+* Ejecute el comando `cat /proc/meminfo`
+** ¿Qué parámetros reconoce?
+** ¿Cuánta memoria tiene su sistema?
+** ¿Cuánta memoria libre tiene su sistema?
+** ¿Cuánta memoria swap tiene su sistema?
+====
+
+
+=== free
+
+El comando **free** proporciona información sobre el estado de la memoria.
+
+==== Responda
+====
+* Ejecute el comando `free`
+** ¿Cuánta memoria *total*, *usada* y *libre* tiene su sistema actualmente?
+** ¿En qué unidad cree que están los valores que obtuvo como salida?
+* Ejecute el comando `free -m`
+** ¿Cuál es la diferencia respecto al comando anterior?
+** ¿Y si utiliza el parámetro **-g**?
+* Ejecute el comando `free -h`
+** Compare los resultados y explique que parámetro resulta más conveniente
+* Como resultado de los comandos ejecutados, ¿Cuánta memoria swap tiene en
+    total?
+====
+
+
+=== vmstat
+
+El mecanismo de comunicación con los procesos es mediante el uso de *señales*.
+El comando **vmstat** proporciona información sobre la memoria virtual,
+paginación, procesos, IO, entre otros.
+
+==== Responda
+====
+* Ejecute el comando `vmstat`
+** Compare sus resultados con los de *free*
+** ¿Qué información adicional se obtiene?
+** ¿Hay información nueva en cuanto a la memoria?
+====
+
+
+=== swapoff / swapon
+
+Usando los comandos **swapoff** y **swapon** es posible detener e iniciar
+respectivamente una partición de swap para la paginación de memoria al disco
+duro.
+
+==== Responda
+====
+* Ejecute el comando `swapoff -a` seguido del comando `free`
+** ¿Se alteraron los valores de la fila *swap*? ¿Cómo?
+* Ejecute el comando `swapon -a` seguido del comando `free`
+** ¿Se alteraron los valores de la fila *swap*? ¿Cómo?
+* ¿Puede pensar en una utilidad para esto?
+====
+
+
+=== top
+
+De la misma forma que usamos el comando **top** para monitorizar los procesos,
+podemos usarlo para obtener información dinámica y en tiempo real sobre la
+memoria.
+
+==== Responda
+====
+* Ejecute el comando `top`. ¿Qué información útil puede identificar sobre la
+    memoria?
+* ¿En qué casos usaría *top* en lugar de las otras herramientas?
+* ¿En qué casos usaría otras herramientas en lugar de *top*?
+====
+
+
+<<<
+
+=== Conclusiones
+
+NOTE: Escriba los principales resultados y conclusiones de su práctica.
+
+<<<
+
+=== Referencias
+NOTE: Liste aquí todas las referencias de las citas que haya puesto en el
+documento. Se recomienda, mas no se obliga, usar https://www.zotero.org[Zotero].
